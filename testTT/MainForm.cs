@@ -31,12 +31,15 @@ namespace testTT
 
         private void BtnCustomer_Click(object sender, EventArgs e)
         {
-
+            KhachHang f = new KhachHang();
+            f.ShowDialog();
         }
 
         private void BtnOrder_Click(object sender, EventArgs e)
         {
 
+            DonHang f = new DonHang();
+            f.ShowDialog();
         }
     }
 }

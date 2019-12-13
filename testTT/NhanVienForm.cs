@@ -21,7 +21,7 @@ namespace testTT
         {
             data_NhanVien_table.DataSource = GetTable();
             ADD_NV_pnl.Visible = false;
-
+            
         }
 
         public DataTable GetTable()

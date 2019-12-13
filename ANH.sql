@@ -4,6 +4,9 @@ go
 --1.
 
 --------PROCEDURE 01------------
+DROP PROC DANG_KY_NHAN_VIEN
+Go
+
 CREATE PROC DANG_KY_NHAN_VIEN
 (
 	@MaNhanVien		int,
@@ -62,7 +65,8 @@ END
 ---------------------
 go
 --------PROCEDURE 02------------
-
+DROP PROC HIEN_THI_NHAN_VIEN_KETOAN
+Go
 CREATE PROCEDURE HIEN_THI_NHAN_VIEN_KETOAN
 AS
 BEGIN
@@ -73,6 +77,8 @@ END
 --2.
 go
 ----TRIGGER 01--------
+DROP TRIGGER them_nhan_vien
+Go
 CREATE TRIGGER them_nhan_vien ON NhanVien AFTER INSERT AS
 BEGIN
 	--DECLARE @temp varchar(50)
@@ -94,7 +100,9 @@ END
 
 --------TRIGGER 02----------------
 GO
-CREATE TRIGGER them_don_hang 
+DROP TRIGGER t_them_don_hang
+Go
+CREATE TRIGGER t_them_don_hang 
 ON DonHang 
 FOR INSERT 
 AS
@@ -134,7 +142,8 @@ ORDER BY LuotBan ASC
 --4.
 go
 --------FUNCTION 01--------------
-
+DROP FUNCTION DEM_SL_DON_HANG
+Go
 CREATE FUNCTION DEM_SL_DON_HANG
 (
 @MasoKhachHang		char(8)
@@ -160,7 +169,8 @@ END
 
 go
 --------FUNCTION 02--------------
-
+DROP FUNCTION KIEM_TRA_TIEN_THEO_NGAY
+Go
 CREATE FUNCTION KIEM_TRA_TIEN_THEO_NGAY
 (
 @CHECK int
@@ -190,6 +200,9 @@ END
 
 
 go
+
+DROP PROC HIEN_THI_TAT_CA_NV
+Go
 CREATE PROCEDURE HIEN_THI_TAT_CA_NV
 AS
 BEGIN

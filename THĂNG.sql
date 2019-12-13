@@ -4,7 +4,8 @@ go
 --1.
 
 ------------PROCEDURE 01----------------
-
+DROP PROC them_don_Hang
+Go
 CREATE PROCEDURE them_don_Hang
 (
 	@MaHoaDon			char(20),
@@ -38,6 +39,8 @@ END
 
 ----------------------------------------
 go
+DROP PROC HIEN_THI_HOA_DON_TU_NGAY
+Go
 ------------PROCEDURE 02----------------
 CREATE PROCEDURE HIEN_THI_HOA_DON_TU_NGAY
 (@day date)
@@ -49,6 +52,8 @@ END
 ----------------------------------------
 
 go
+DROP TRIGGER xoa_nhan_vien
+Go
 --2.
 ----TRIGGER 01--------
 CREATE TRIGGER xoa_nhan_vien ON NhanVien INSTEAD OF DELETE AS
@@ -80,6 +85,8 @@ BEGIN
 END
 ----------------------
 go
+DROP TRIGGER KIEM_TRA_TUOI_NV
+Go
 --------TRIGGER 02----------------
 CREATE TRIGGER KIEM_TRA_TUOI_NV
 ON NhanVien after insert
@@ -126,7 +133,8 @@ ORDER BY Tong_Tien DESC
 go
 --4.
 --------FUNCTION 01--------------
-
+DROP FUNCTION TIM_THEO_TUOI
+Go
 CREATE FUNCTION TIM_THEO_TUOI
 ( 
 @age int
@@ -148,10 +156,10 @@ BEGIN
 END
 
 ---------------------------------
-
 go
 --------FUNCTION 02--------------
-
+DROP FUNCTION PHAN_LOAI_NGHE
+GO
 CREATE FUNCTION PHAN_LOAI_NGHE
 (
 @NGANH varchar(50)  
@@ -166,11 +174,22 @@ returns @temp TABLE
 AS
 BEGIN
 	if(@NGANH = 'KT')
+	BEGIN
 	insert into @temp select MaNhanVien,Ho,TenDem,Ten from NhanVien where Loai = 'KT'
+	return
+	END
+	
 	if(@NGANH = 'QK')
+	BEGIN
 	insert into @temp select MaNhanVien,Ho,TenDem,Ten from NhanVien where Loai = 'QK'
+	return 
+	END
+
 	if(@NGANH = 'VC')
+	BEGIN
 	insert into @temp select MaNhanVien,Ho,TenDem,Ten from NhanVien where Loai = 'VC'
-	else insert into @temp values('Error','Error','Error','Error')
+	return
+	END
+	insert into @temp values('Error','Error','Error','Error')
 	return
 END

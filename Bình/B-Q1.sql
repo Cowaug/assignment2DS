@@ -30,18 +30,18 @@ ELSE
 END
 GO
 
---exec ThemSanPham @MaSP ='SP000099',
---						@TenSP ='12',
---						@GiaSP = 125000,
---						@HDSD = 'Bánh quy',
---						@TrongLuong ='100g',
---						@ThongTinMoTa ='Không',
---						@MaLoai ='LSP00001',
---						@HanSuDung= '2018-1-1';
---Go
+exec ThemSanPham @MaSP ='SP000099',
+						@TenSP ='12',
+						@GiaSP = 125000,
+						@HDSD = 'Bánh quy',
+						@TrongLuong ='100g',
+						@ThongTinMoTa ='Không',
+						@MaLoai ='LSP00001',
+						@HanSuDung= '2018-1-1';
+Go
 
 
---#################################
+
 drop proc HienSanPhamConHanSuDungItHon
 go
 
@@ -72,7 +72,7 @@ go
 
 
 
---- procedure cho câu 5 // ko phải câu 1
+-- procedure cho câu 5 // ko phải câu 1
 DROP PROC CapNhatSanPham
 GO
 

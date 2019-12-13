@@ -138,7 +138,7 @@ namespace testTT
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Mặt hàng đang được khách đặt, không thể xóa");
             }
         }
 

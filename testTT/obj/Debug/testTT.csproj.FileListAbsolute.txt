@@ -43,3 +43,5 @@ C:\Users\exos2\Desktop\assignment2DS-master\testTT\bin\Debug\testTT.exe.config
 C:\Users\exos2\Desktop\assignment2DS-master\testTT\bin\Debug\testTT.exe
 C:\Users\exos2\Desktop\assignment2DS-master\testTT\bin\Debug\testTT.pdb
 C:\Users\exos2\Desktop\assignment2DS-master\testTT\obj\Debug\testTT.NhanVienForm.resources
+C:\Users\exos2\Desktop\assignment2DS-master\testTT\obj\Debug\testTT.KhachHang.resources
+C:\Users\exos2\Desktop\assignment2DS-master\testTT\obj\Debug\testTT.DonHang.resources
