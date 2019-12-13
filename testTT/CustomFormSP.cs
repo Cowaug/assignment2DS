@@ -24,15 +24,6 @@ namespace testTT
             connection = new SqlConnection(str);
             connection.Open();
             LoadData();
-            int i = 0;
-            textBox8.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-            textBox2.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            textBox3.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            textBox4.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            textBox5.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
-            textBox6.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
-            textBox7.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();
-            dateTimePicker1.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();
 
         }
 
@@ -44,6 +35,16 @@ namespace testTT
             table.Clear();
             adapter.Fill(table);
             dataGridView1.DataSource = table;
+
+            int i = 0;
+            textBox8.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            textBox2.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            textBox3.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            textBox4.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+            textBox5.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            textBox6.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+            textBox7.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();
+            dateTimePicker1.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();
         }
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -97,7 +98,10 @@ namespace testTT
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                if (ex.Message.Contains("PRIMARY"))
+                    MessageBox.Show("Sản phẩm đã tồn tại");
+                else
+                    MessageBox.Show(ex.Message);
             }
         }
 
@@ -136,9 +140,11 @@ namespace testTT
                 command.ExecuteNonQuery();
                 LoadData();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Mặt hàng đang được khách đặt, không thể xóa");
+            catch (Exception ex) { 
+            if (ex.Message.Contains("DonHangCoSanPham"))
+                    MessageBox.Show("Mặt hàng đang được khách đặt, không thể xóa");
+                else
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -155,11 +161,11 @@ namespace testTT
                 command.CommandText = "SELECT * FROM SanPham WHERE" +
                      //(textBox8.Text == "" ? "" : " MaSP = '" + textBox8.Text.ToString()) + "'" +
                      //(textBox2.Text == "" ? "" : " TenSP = '" + textBox2.Text.ToString()) + "'" +
-                     (textBox3.Text == "" ? "" : " GiaSP = " + textBox3.Text.ToString()) //+
-                     //(textBox4.Text == "" ? "" : " HDSD = '" + textBox4.Text.ToString()) + "'" +
-                     //(textBox5.Text == "" ? "" : " TrongLuong = '" + textBox5.Text.ToString()) + "'" +
-                     //(textBox6.Text == "" ? "" : " ThongTinMoTa = '" + textBox6.Text.ToString()) + "'" +
-                     //(textBox7.Text == "" ? "" : " MaLoai = '" + textBox7.Text.ToString()) + "'"
+                     (textBox10.Text == "" ? "" : " GiaSP = " + textBox10.Text.ToString()) //+
+                                                                                           //(textBox4.Text == "" ? "" : " HDSD = '" + textBox4.Text.ToString()) + "'" +
+                                                                                           //(textBox5.Text == "" ? "" : " TrongLuong = '" + textBox5.Text.ToString()) + "'" +
+                                                                                           //(textBox6.Text == "" ? "" : " ThongTinMoTa = '" + textBox6.Text.ToString()) + "'" +
+                                                                                           //(textBox7.Text == "" ? "" : " MaLoai = '" + textBox7.Text.ToString()) + "'"
                      ;
                 adapter.SelectCommand = command;
                 table.Clear();
@@ -170,6 +176,11 @@ namespace testTT
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
